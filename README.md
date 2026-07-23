@@ -4,34 +4,34 @@
 
 # Khouloud Fekih Psychology Platform
 
-### Multilingual Appointment Booking & Patient Management Web Application
+### Multilingual Appointment Booking, Patient Portal & Practice Management Application
 
-**Flask · Python · SQLite · Jinja2 · HTML · CSS · JavaScript · Responsive Web Design**
+**Flask · Python · SQLite · Jinja2 · HTML5 · CSS3 · JavaScript · Responsive Design**
 
 <br>
 
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](#technology-stack)
 [![Flask](https://img.shields.io/badge/Flask-Web%20Framework-000000?logo=flask&logoColor=white)](#technology-stack)
 [![SQLite](https://img.shields.io/badge/SQLite-Relational%20Database-003B57?logo=sqlite&logoColor=white)](#database-design)
-[![Jinja](https://img.shields.io/badge/Jinja2-Template%20Engine-B41717?logo=jinja&logoColor=white)](#technology-stack)
+[![Jinja2](https://img.shields.io/badge/Jinja2-Template%20Engine-B41717?logo=jinja&logoColor=white)](#technology-stack)
 [![HTML5](https://img.shields.io/badge/HTML5-Frontend-E34F26?logo=html5&logoColor=white)](#technology-stack)
 [![CSS3](https://img.shields.io/badge/CSS3-Premium%20UI-1572B6?logo=css3&logoColor=white)](#technology-stack)
 [![JavaScript](https://img.shields.io/badge/JavaScript-Interactions-F7DF1E?logo=javascript&logoColor=black)](#technology-stack)
 [![Multilingual](https://img.shields.io/badge/Multilingual-FR%20%7C%20AR%20%7C%20EN-CB846A)](#multilingual-experience)
 [![Responsive](https://img.shields.io/badge/Design-Responsive-51384F)](#responsive-design)
-[![Project](https://img.shields.io/badge/Project-Full--Stack%20Web%20Application-7B506F)](#project-context)
+[![Project](https://img.shields.io/badge/Project-Full--Stack%20Application-7B506F)](#project-context)
 
 <br>
 
-**A complete multilingual web platform connecting a clinical psychologist with patients through online appointment requests, dedicated dashboards, notifications and private messaging.**
+**A complete multilingual web platform connecting a clinical psychologist with patients through appointment booking, dedicated dashboards, notifications and private messaging.**
 
 <br>
 
-[Platform Overview](#overview) ·
+[Overview](#overview) ·
 [Features](#core-features) ·
 [Screenshots](#platform-showcase) ·
-[Installation](#installation) ·
-[Architecture](#system-architecture)
+[Architecture](#system-architecture) ·
+[Installation](#installation)
 
 </div>
 
@@ -70,8 +70,8 @@
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
 - [Application Routes](#application-routes)
-- [Testing the Platform](#testing-the-platform)
-- [Deployment Considerations](#deployment-considerations)
+- [Testing](#testing)
+- [Deployment](#deployment)
 - [Privacy and Data Protection](#privacy-and-data-protection)
 - [Limitations](#limitations)
 - [Future Improvements](#future-improvements)
@@ -82,27 +82,27 @@
 
 ## Overview
 
-**Khouloud Fekih Psychology Platform** is a multilingual full-stack web application developed for a clinical psychologist based in Monastir, Tunisia.
+**Khouloud Fekih Psychology Platform** is a multilingual full-stack web application created for a clinical psychologist based in Monastir, Tunisia.
 
 The platform provides a unified digital environment where visitors and registered patients can:
 
-- discover the psychologist and her approach;
+- discover the psychologist and her professional approach;
 - explore available psychological support services;
-- create a patient account;
-- request an appointment online;
+- create and access a personal patient account;
+- submit appointment requests online;
 - choose a consultation type;
 - select a preferred date and time;
-- follow the status of each request;
+- follow the status of submitted requests;
 - receive notifications;
-- communicate through a dedicated messaging space.
+- communicate through a private messaging space.
 
-The psychologist accesses a separate professional area where appointment requests, patients, statuses and conversations can be managed.
+The psychologist accesses a separate professional area where appointments, requests and conversations can be managed.
 
 ```text
 Public Website
       │
-      ├── Psychologist Presentation
-      ├── Services
+      ├── Professional Presentation
+      ├── Psychological Services
       ├── Contact Information
       ├── Multilingual Content
       └── Appointment Call-to-Action
@@ -124,90 +124,95 @@ Public Website
                  ▼
         Professional Dashboard
                  │
-          Appointment Management
+                 ▼
+       Appointment Management
 ```
 
-The project demonstrates the implementation of a practical web product rather than an isolated technical prototype.
+The project demonstrates the design and development of a practical web product rather than an isolated technical prototype.
 
 ---
 
 ## Project Context
 
-This platform was developed as a real-world website for **Khouloud Fekih**, a clinical psychologist.
+This platform was developed for the professional activity of **Khouloud Fekih**, a clinical psychologist.
 
-It combines:
+The application combines:
 
 - a professional public website;
-- a multilingual content system;
-- patient account management;
-- an appointment-request workflow;
+- multilingual content management;
+- patient registration and authentication;
+- online appointment requests;
+- a patient dashboard;
 - an administrator dashboard;
 - appointment status management;
-- a patient–psychologist conversation system;
+- patient–psychologist messaging;
 - notifications;
-- persistent database storage.
+- relational data storage.
 
-The project focuses on both technical implementation and user experience.
-
-### Main development areas
+### Main engineering areas
 
 - backend development with Flask;
-- relational data management with SQLite;
-- dynamic server-side rendering with Jinja2;
-- user and administrator sessions;
-- form handling and validation;
+- database management with SQLite;
+- dynamic rendering with Jinja2;
+- session-based authentication;
+- form validation;
 - appointment lifecycle management;
 - multilingual interface design;
-- right-to-left Arabic layout;
-- responsive frontend development;
-- dashboard design;
+- Arabic right-to-left support;
+- dashboard development;
+- responsive user-interface design;
 - private messaging;
-- content management.
+- notification management.
 
 ---
 
 ## Business Need
 
-Independent healthcare and well-being professionals often rely on fragmented communication channels such as:
+Independent healthcare and well-being professionals often depend on fragmented communication channels such as:
 
 - telephone calls;
 - social-media messages;
-- informal messaging applications;
+- messaging applications;
 - manually managed calendars;
 - paper appointment records.
 
-These methods can create several difficulties.
+These workflows may create several difficulties.
 
-### Appointment requests
+### Appointment coordination
 
 Patients may not know:
 
-- which consultation type to select;
-- which dates are available;
-- whether the request has been accepted;
+- which consultation type to choose;
+- which date and time to request;
+- whether the appointment request was accepted;
 - whether a response has been sent.
 
 ### Administrative organisation
 
 The professional needs to:
 
-- view all incoming requests;
+- view all appointment requests;
 - identify pending requests;
 - confirm appointments;
 - cancel appointments;
-- search for a patient;
-- sort requests by date;
+- return appointments to pending status;
+- search for patients;
+- filter requests;
 - monitor daily activity.
 
 ### Communication
 
-Patients may need a dedicated channel to ask practical questions related to their requests.
+Patients may need a dedicated channel for practical questions related to appointments and follow-up.
 
-### Accessibility
+### Language accessibility
 
-The audience may prefer French, Arabic or English.
+The target audience may prefer:
 
-The platform centralises these interactions in one coherent application.
+- French;
+- Arabic;
+- English.
+
+The platform centralises these interactions in one coherent web application.
 
 ---
 
@@ -217,14 +222,14 @@ The platform centralises these interactions in one coherent application.
 |---|---|---|
 | Present the professional activity | Public multilingual website | Improve digital presence |
 | Simplify appointment requests | Online booking form | Reduce manual coordination |
-| Track patient requests | Patient dashboard | Improve transparency |
-| Manage appointment statuses | Admin dashboard | Centralise operations |
+| Track submitted requests | Patient dashboard | Improve transparency |
+| Manage appointment statuses | Admin dashboard | Centralise administrative work |
 | Facilitate communication | Private messaging | Create a dedicated exchange channel |
-| Inform users | Notifications | Improve follow-up |
-| Serve a multilingual audience | French, Arabic and English | Increase accessibility |
-| Persist application data | SQLite database | Maintain appointments and messages |
-| Separate user roles | Patient and admin areas | Protect administrative functions |
-| Improve usability | Responsive premium interface | Deliver a professional experience |
+| Inform patients | Notification system | Improve follow-up |
+| Support multiple languages | French, Arabic and English | Increase accessibility |
+| Store application data | SQLite database | Maintain persistent records |
+| Separate access roles | Patient and admin areas | Protect administrative functions |
+| Deliver a professional UX | Responsive premium interface | Improve usability and trust |
 
 ---
 
@@ -233,12 +238,11 @@ The platform centralises these interactions in one coherent application.
 ### Public website
 
 - modern landing page;
-- psychologist profile;
-- presentation of the clinical approach;
-- services and accompaniment categories;
-- contact page;
-- office images;
-- location information;
+- professional profile;
+- presentation of the psychological approach;
+- service and accompaniment pages;
+- contact information;
+- office imagery;
 - call-to-action buttons;
 - multilingual navigation.
 
@@ -246,66 +250,63 @@ The platform centralises these interactions in one coherent application.
 
 - account registration;
 - patient login;
-- session-based access;
+- session management;
 - logout;
 - protected patient pages.
 
 ### Appointment requests
 
-- patient information;
-- consultation type selection;
-- preferred date;
-- preferred time;
-- general reason field;
+- contact information collection;
+- consultation-type selection;
+- preferred-date selection;
+- preferred-time selection;
+- general-reason field;
 - request creation;
-- request confirmation page;
-- controlled appointment statuses.
+- appointment-status tracking.
 
 ### Patient dashboard
 
 - appointment history;
-- request details;
-- status indicators;
-- cancellation of eligible pending requests;
-- personal data display;
-- notification access.
+- appointment-request details;
+- status badges;
+- pending-request cancellation;
+- notifications;
+- access to private messaging.
 
 ### Administrator dashboard
 
-- global appointment statistics;
-- total request count;
-- pending request count;
-- confirmed request count;
-- cancelled request count;
+- total appointment requests;
+- pending-request count;
+- confirmed-appointment count;
+- cancelled-appointment count;
 - daily agenda;
-- recent appointment requests;
+- recent requests;
 - search;
-- filters;
+- filtering;
 - sorting;
-- status changes.
+- appointment status management.
 
 ### Messaging
 
-- patient–psychologist conversation;
-- separate message styles by sender;
-- message timestamps;
+- patient–psychologist conversations;
+- sender-specific message styles;
+- timestamps;
 - persistent conversation history;
-- administrator conversation management.
+- administrator messaging interface.
 
 ### Multilingual system
 
-- French;
-- Arabic;
-- English;
-- language selector;
-- translated interface content;
-- right-to-left Arabic layout.
+- French interface;
+- Arabic interface;
+- English interface;
+- session-based language selection;
+- right-to-left Arabic rendering.
 
 ---
 
 # Platform Showcase
 
-The following screenshots present the real platform experience and its principal workflows.
+The following visuals present the principal pages and workflows of the platform.
 
 ---
 
@@ -314,27 +315,26 @@ The following screenshots present the real platform experience and its principal
 <p align="center">
   <img
     src="assets/accueil.png"
-    alt="Khouloud Fekih psychologist website homepage"
+    alt="Khouloud Fekih clinical psychologist website homepage"
     width="100%"
   >
 </p>
 
-The homepage introduces the psychologist through a refined editorial interface.
+The homepage introduces the psychologist through a refined and reassuring interface.
 
-### Homepage elements
+### Homepage content
 
-- professional identity;
-- clinical psychologist title;
-- location in Monastir;
+- psychologist name and professional title;
+- Monastir location;
 - appointment availability;
-- audience categories;
-- primary appointment action;
-- approach discovery;
+- target audiences;
+- appointment call-to-action;
+- clinical-approach discovery;
 - language selector;
 - authenticated-user navigation;
-- notification indicator.
+- notifications.
 
-### Main message
+### Main identity
 
 ```text
 Comprendre.
@@ -342,14 +342,15 @@ Apaiser.
 Avancer.
 ```
 
-The interface communicates a calm, professional and reassuring identity through:
+The interface communicates professionalism and reassurance through:
 
-- warm neutral colours;
-- dark plum typography;
-- peach accents;
+- cream and off-white backgrounds;
+- deep plum typography;
+- warm peach accents;
+- elegant serif headings;
 - generous spacing;
-- rounded visual components;
-- elegant serif headings.
+- rounded cards;
+- subtle shadows.
 
 ---
 
@@ -358,43 +359,44 @@ The interface communicates a calm, professional and reassuring identity through:
 <p align="center">
   <img
     src="assets/formulaire.png"
-    alt="Online psychology appointment request form"
+    alt="Online clinical psychology appointment request form"
     width="100%"
   >
 </p>
 
-The appointment page guides the patient through a simple request process.
+The appointment page guides the patient through a clear request process.
 
-### Request steps
+### Booking steps
 
 ```text
 1. Enter contact information
-2. Choose a consultation type
-3. Select a preferred date and time
-4. Provide an optional general reason
-5. Submit the request
-6. Wait for confirmation
+2. Select a consultation type
+3. Choose a preferred date
+4. Choose a preferred time
+5. Provide an optional general reason
+6. Submit the request
+7. Wait for office confirmation
 ```
 
 ### Form fields
 
 - full name;
-- phone number;
+- telephone number;
 - email address;
 - consultation type;
-- preferred date;
-- preferred time;
+- desired date;
+- desired time;
 - general reason.
 
-### Privacy-oriented wording
+### Appointment principle
 
-The form encourages patients to provide only a general reason and avoid transmitting unnecessary sensitive medical information.
+Submitting the form creates an appointment **request**.
 
-### Appointment confirmation model
+The appointment becomes definitive only after the psychologist or office confirms it.
 
-Submitting the form creates a request.
+### Privacy-conscious design
 
-The appointment becomes definitive only after confirmation by the office.
+The reason field encourages patients to provide only general information without transmitting unnecessary sensitive clinical details.
 
 ---
 
@@ -402,20 +404,20 @@ The appointment becomes definitive only after confirmation by the office.
 
 <p align="center">
   <img
-    src="assets/espacepatientrendezvous.png"
-    alt="Patient appointment dashboard"
+    src="assets/espacepatientrendez.png"
+    alt="Patient dashboard showing psychology appointment requests"
     width="100%"
   >
 </p>
 
-The patient dashboard centralises all submitted appointment requests.
+The patient area centralises all submitted appointment requests.
 
 ### Information displayed
 
 - request number;
 - consultation type;
-- preferred date;
-- preferred time;
+- desired date;
+- desired time;
 - phone number;
 - email;
 - current status.
@@ -424,17 +426,22 @@ The patient dashboard centralises all submitted appointment requests.
 
 | Status | Meaning |
 |---|---|
-| Pending | The request is waiting for administrative review |
-| Confirmed | The appointment has been approved |
-| Cancelled | The request or appointment has been cancelled |
+| Pending | Awaiting administrative review |
+| Confirmed | Approved by the office |
+| Cancelled | Cancelled by the patient or administrator |
 
 ### Patient actions
 
-Patients may review appointment information and cancel eligible pending requests.
+Patients can:
 
-### Visual status system
+- view request history;
+- monitor appointment status;
+- inspect appointment information;
+- cancel eligible pending requests.
 
-- green for confirmed requests;
+### Visual status language
+
+- green for confirmed appointments;
 - yellow for pending requests;
 - red or soft pink for cancellation actions.
 
@@ -445,44 +452,49 @@ Patients may review appointment information and cancel eligible pending requests
 <p align="center">
   <img
     src="assets/conversation.png"
-    alt="Patient and psychologist messaging conversation"
+    alt="Private patient and psychologist messaging conversation"
     width="100%"
   >
 </p>
 
-The messaging space provides a dedicated conversation between the patient and the office.
+The messaging interface provides a private communication channel between the patient and the psychology office.
 
-### Messaging characteristics
+### Messaging capabilities
 
-- authenticated access;
+- protected access;
 - persistent message history;
 - message timestamps;
-- distinct visual styles by sender;
+- differentiated sender styles;
 - message composition field;
 - direct send action;
-- conversation-specific display.
+- patient-specific conversations.
 
-### Conversation design
+### Communication flow
 
 ```text
-Patient message
-      │
-      ▼
-Stored in database
-      │
-      ▼
-Visible in admin messaging area
-      │
-      ▼
-Administrator response
-      │
-      ▼
-Visible in patient conversation
+Patient Sends Message
+        │
+        ▼
+Message Stored in SQLite
+        │
+        ▼
+Message Appears in Admin Area
+        │
+        ▼
+Administrator Responds
+        │
+        ▼
+Response Appears in Patient Space
 ```
 
-The system is intended for practical communication and appointment follow-up.
+The messaging feature is intended for practical communication such as:
 
-It should not be treated as an emergency service or as a replacement for a clinical consultation.
+- appointment confirmation questions;
+- schedule clarifications;
+- administrative information;
+- general appointment follow-up.
+
+It is not designed as an emergency service or a replacement for a clinical consultation.
 
 ---
 
@@ -491,34 +503,34 @@ It should not be treated as an emergency service or as a replacement for a clini
 <p align="center">
   <img
     src="assets/tableaudebord.png"
-    alt="Psychologist administrator dashboard"
+    alt="Clinical psychologist administrator dashboard"
     width="100%"
   >
 </p>
 
-The professional dashboard provides an overview of appointment activity.
+The professional dashboard provides a global overview of appointment activity.
 
-### Dashboard metrics
+### Dashboard indicators
 
 - total requests;
 - pending requests;
 - confirmed appointments;
 - cancelled appointments.
 
-### Operational views
+### Operational sections
 
-- today's agenda;
-- recent requests;
-- appointment statuses;
-- patient identification;
+- daily agenda;
+- recent appointment requests;
+- patient identity;
 - consultation type;
-- scheduled date and time.
+- appointment date and time;
+- current status.
 
-### Administrator navigation
+### Professional navigation
 
 - dashboard;
 - messaging;
-- account identity;
+- administrator identity;
 - secure logout.
 
 ---
@@ -527,21 +539,23 @@ The professional dashboard provides an overview of appointment activity.
 
 <p align="center">
   <img
-    src="assets/gestiondemandes.png"
-    alt="Administrator appointment request management"
+    src="assets/gestiondemande.png"
+    alt="Administrator appointment request management interface"
     width="100%"
   >
 </p>
 
-The request-management interface enables the administrator to review and update appointment requests.
+The request-management page enables the administrator to search, filter and process appointment requests.
 
-### Search and filtering
+### Search capabilities
 
-The administrator can search using:
+Requests can be searched using:
 
 - patient name;
-- email;
+- email address;
 - telephone number.
+
+### Filtering capabilities
 
 Requests can be filtered by:
 
@@ -550,15 +564,17 @@ Requests can be filtered by:
 - confirmed;
 - cancelled.
 
-Requests can also be sorted by appointment date.
+### Sorting
 
-### Administrative actions
+Requests can be sorted by appointment date.
 
-- confirm;
-- cancel;
-- return to pending status;
-- inspect contact information;
-- review the request creation date.
+### Administrator actions
+
+- confirm appointment;
+- cancel appointment;
+- return appointment to pending;
+- view patient contact details;
+- inspect request creation date.
 
 ### Appointment lifecycle
 
@@ -571,7 +587,7 @@ Pending
   ▼                ▼
 Confirmed       Cancelled
   │
-  └──────► Pending again
+  └──────► Pending Again
            when authorised
 ```
 
@@ -579,7 +595,7 @@ Confirmed       Cancelled
 
 ## Multilingual Experience
 
-The platform supports three interface languages.
+The platform supports three languages.
 
 | Language | Code | Direction |
 |---|---|---|
@@ -587,62 +603,60 @@ The platform supports three interface languages.
 | Arabic | AR | Right to left |
 | English | EN | Left to right |
 
-### French interface
+### French
 
-French is used as the principal interface language.
+French is the principal interface language.
 
-### Arabic interface
+### Arabic
 
-The Arabic experience includes:
+The Arabic interface includes:
 
 - translated navigation;
-- translated homepage content;
-- translated actions;
-- right-to-left alignment;
-- reversed interface flow where appropriate.
+- translated buttons;
+- translated page content;
+- right-to-left text alignment;
+- RTL-aware layout behaviour.
 
-### English interface
+### English
 
-The English version makes the public website accessible to a broader audience.
+The English version extends the website to additional visitors and patients.
 
-### Language-switching concept
+### Language workflow
 
 ```text
-User selects language
-        │
-        ▼
-Language saved for the session
-        │
-        ▼
-Translation dictionary loaded
-        │
-        ▼
-Templates render translated content
-        │
-        ▼
-Arabic activates RTL presentation
+User Selects Language
+          │
+          ▼
+Language Saved in Session
+          │
+          ▼
+Translation Content Loaded
+          │
+          ▼
+Jinja Template Rendered
+          │
+          ▼
+RTL Enabled for Arabic
 ```
 
 ---
 
 ## Patient Journey
 
-The patient journey begins on the public website and continues inside a protected personal space.
-
 ```text
 Visit Homepage
       │
       ▼
-Explore Services
+Discover Services
       │
       ▼
-Create Account / Sign In
+Create Account / Login
       │
       ▼
-Request Appointment
+Submit Appointment Request
       │
       ▼
-Request Stored as Pending
+Request Saved as Pending
       │
       ▼
 View Request in Dashboard
@@ -658,13 +672,14 @@ Receive Status Update
 Communicate through Messaging
 ```
 
-### Journey goals
+### Journey objectives
 
-- minimise confusion;
-- avoid unnecessary steps;
-- provide visibility on appointment status;
-- maintain a coherent visual experience;
-- give the patient direct access to relevant information.
+- reduce booking complexity;
+- make statuses transparent;
+- maintain consistent navigation;
+- centralise patient information;
+- provide direct communication;
+- reduce administrative uncertainty.
 
 ---
 
@@ -676,10 +691,10 @@ Administrator Login
         ▼
 Professional Dashboard
         │
-        ├── Review KPIs
-        ├── View Today's Agenda
+        ├── Review Statistics
+        ├── View Daily Agenda
         ├── Inspect Recent Requests
-        └── Open Messaging
+        └── Access Messaging
                     │
                     ▼
           Appointment Management
@@ -695,41 +710,41 @@ Professional Dashboard
               Notification
 ```
 
-### Professional objectives
+### Professional goals
 
-- centralise requests;
+- centralise incoming requests;
 - prioritise pending appointments;
-- reduce manual tracking;
-- simplify patient follow-up;
-- maintain appointment traceability.
+- reduce manual coordination;
+- simplify follow-up;
+- preserve request history.
 
 ---
 
 ## Appointment Management
 
-The appointment system represents the central business workflow of the application.
+The appointment workflow represents the main business process of the application.
 
-### Appointment data
+### Appointment information
 
-Each request may contain:
+An appointment request may contain:
 
 ```json
 {
-  "patient": "Patient name",
+  "patient_name": "Example Patient",
   "email": "patient@example.com",
   "phone": "00000000",
   "consultation_type": "First consultation",
   "desired_date": "2026-07-24",
   "desired_time": "10:00",
-  "reason": "General reason",
+  "reason": "General appointment reason",
   "status": "pending",
   "created_at": "2026-07-20 09:15:36"
 }
 ```
 
-### Consultation types
+### Consultation categories
 
-The available options can be configured according to the professional activity, for example:
+The application may support categories such as:
 
 - first consultation;
 - psychological follow-up;
@@ -737,12 +752,6 @@ The available options can be configured according to the professional activity, 
 - adolescent consultation;
 - adult consultation;
 - family consultation.
-
-### Time-slot principles
-
-The appointment form allows the patient to indicate a preferred moment.
-
-The final appointment remains subject to confirmation by the office.
 
 ### Status transitions
 
@@ -752,35 +761,33 @@ The final appointment remains subject to confirmation by the office.
 | Pending | Cancelled |
 | Confirmed | Pending |
 | Confirmed | Cancelled |
-| Cancelled | Pending, if authorised |
+| Cancelled | Pending, when authorised |
 
 ---
 
 ## Messaging System
 
-The platform provides separate patient and administrator messaging views.
+The platform contains separate messaging views for patients and administrators.
 
 ### Patient side
 
-The patient can:
+Patients can:
 
-- open the conversation;
+- open their private conversation;
 - view previous messages;
-- send a new message;
-- identify message timestamps.
+- send a message;
+- see timestamps.
 
 ### Administrator side
 
 The administrator can:
 
-- view patient conversations;
-- access conversation history;
-- respond to a patient;
-- monitor unread exchanges.
+- access patient conversations;
+- view conversation histories;
+- reply to patients;
+- identify unread exchanges.
 
-### Message data model
-
-A message generally contains:
+### Message structure
 
 ```json
 {
@@ -795,52 +802,36 @@ A message generally contains:
 }
 ```
 
-### Appropriate use
-
-The messaging system is designed for:
-
-- appointment questions;
-- schedule clarification;
-- practical follow-up;
-- administrative communication.
-
-It is not designed for:
-
-- medical emergencies;
-- immediate crisis intervention;
-- sharing highly sensitive clinical records;
-- replacing a consultation.
-
 ---
 
 ## Notification System
 
-The notification indicator informs the patient about important platform updates.
+Notifications inform users about important platform events.
 
-### Potential notification events
+### Possible notification events
 
-- appointment request created;
+- appointment request submitted;
 - appointment confirmed;
 - appointment cancelled;
 - request returned to pending;
 - new message received;
-- administrative response available.
+- administrator response available.
 
 ### Notification lifecycle
 
 ```text
-System Event
-     │
-     ▼
+Application Event
+      │
+      ▼
 Notification Created
-     │
-     ▼
+      │
+      ▼
 Unread Counter Updated
-     │
-     ▼
+      │
+      ▼
 User Opens Notification
-     │
-     ▼
+      │
+      ▼
 Notification Marked as Read
 ```
 
@@ -848,49 +839,61 @@ Notification Marked as Read
 
 ## Authentication and Access Control
 
-The platform separates patient and administrator access.
+The platform separates public, patient and administrator permissions.
 
-### Patient authentication
+### Public visitor
 
-Patients access:
+A visitor can access:
 
-- their own appointment requests;
-- their own notifications;
-- their own conversation;
-- their personal account.
+- homepage;
+- about page;
+- services;
+- contact page;
+- registration;
+- login.
 
-### Administrator authentication
+### Authenticated patient
 
-The administrator accesses:
+A patient can access:
 
-- global appointment data;
-- all relevant requests;
-- professional statistics;
-- patient conversations;
-- administrative actions.
+- personal appointments;
+- appointment requests;
+- notifications;
+- private conversation;
+- account-related functions.
 
-### Access separation
+### Administrator
+
+The administrator can access:
+
+- appointment statistics;
+- all requests;
+- status-management actions;
+- professional messaging;
+- patient-related administrative information.
+
+### Role separation
 
 ```text
-Unauthenticated Visitor
-        │
-        ├── Public Pages
-        ├── Login
-        └── Registration
+Public Visitor
+      │
+      ├── Public Pages
+      ├── Registration
+      └── Login
 
 Authenticated Patient
-        │
-        ├── Personal Dashboard
-        ├── Appointment Requests
-        ├── Notifications
-        └── Messaging
+      │
+      ├── Patient Dashboard
+      ├── Appointment Requests
+      ├── Notifications
+      └── Messaging
 
 Authenticated Administrator
-        │
-        ├── Admin Dashboard
-        ├── Request Management
-        ├── Status Actions
-        └── Admin Messaging
+      │
+      ├── Admin Dashboard
+      ├── Request Management
+      ├── Appointment Actions
+      └── Admin Messaging
 ```
 
 ---
@@ -900,7 +903,7 @@ Authenticated Administrator
 <p align="center">
   <img
     src="assets/architecture.png"
-    alt="Khouloud Fekih platform system architecture"
+    alt="Khouloud Fekih psychology platform system architecture"
     width="100%"
   >
 </p>
@@ -909,16 +912,16 @@ The application follows a server-rendered Flask architecture.
 
 ```mermaid
 flowchart TB
-    V[Public Visitor] --> WEB[Public Website]
-    P[Patient] --> PORTAL[Patient Portal]
+    V[Public Visitor] --> PUBLIC[Public Website]
+    P[Patient] --> PATIENT[Patient Portal]
     A[Administrator] --> ADMIN[Admin Dashboard]
 
-    WEB --> FRONT[Frontend Layer]
-    PORTAL --> FRONT
+    PUBLIC --> FRONT[Frontend Layer]
+    PATIENT --> FRONT
     ADMIN --> FRONT
 
-    FRONT --> HTML[HTML]
-    FRONT --> CSS[CSS]
+    FRONT --> HTML[HTML5]
+    FRONT --> CSS[CSS3]
     FRONT --> JS[JavaScript]
     FRONT --> JINJA[Jinja2 Templates]
 
@@ -929,31 +932,31 @@ flowchart TB
 
     FLASK --> ROUTES[Routing]
     FLASK --> AUTH[Authentication]
-    FLASK --> APPT[Appointment Logic]
-    FLASK --> MSG[Messaging]
-    FLASK --> NOTIF[Notifications]
-    FLASK --> LANG[Localisation]
+    FLASK --> APPOINTMENTS[Appointment Logic]
+    FLASK --> MESSAGING[Messaging]
+    FLASK --> NOTIFICATIONS[Notifications]
+    FLASK --> LANGUAGES[Localisation]
     FLASK --> CONTENT[Content Management]
 
     ROUTES --> DB[(SQLite Database)]
     AUTH --> DB
-    APPT --> DB
-    MSG --> DB
-    NOTIF --> DB
+    APPOINTMENTS --> DB
+    MESSAGING --> DB
+    NOTIFICATIONS --> DB
 
     DB --> USERS[Users]
-    DB --> APPOINTMENTS[Appointments]
+    DB --> REQUESTS[Appointments]
     DB --> MESSAGES[Messages]
-    DB --> NOTIFICATIONS[Notifications]
+    DB --> ALERTS[Notifications]
     DB --> ADMINS[Administrators]
 ```
 
 ### Presentation layer
 
-Implemented with:
+Implemented using:
 
-- HTML;
-- CSS;
+- HTML5;
+- CSS3;
 - JavaScript;
 - Jinja2.
 
@@ -962,12 +965,14 @@ Implemented with:
 Implemented with Flask and responsible for:
 
 - routing;
-- sessions;
+- session handling;
+- authentication;
 - form processing;
-- appointment logic;
+- appointment management;
 - status updates;
 - messaging;
-- translations.
+- notifications;
+- localisation.
 
 ### Data layer
 
@@ -980,12 +985,10 @@ Implemented using SQLite.
 <p align="center">
   <img
     src="assets/workflow.png"
-    alt="Khouloud Fekih application workflow"
+    alt="Khouloud Fekih psychology platform workflow"
     width="100%"
   >
 </p>
-
-The workflow connects patient activity with administrator validation.
 
 ### Patient workflow
 
@@ -1002,19 +1005,19 @@ Submit Appointment Request
 Pending Status
       │
       ▼
-View Dashboard
+View Patient Dashboard
       │
       ▼
-Receive Updated Status
+Receive Status Update
       │
       ▼
-Use Messaging
+Use Private Messaging
 ```
 
 ### Administrator workflow
 
 ```text
-Receive Appointment Request
+Receive Request
       │
       ▼
 Review Patient Information
@@ -1023,10 +1026,13 @@ Review Patient Information
 Confirm / Cancel / Return to Pending
       │
       ▼
-Update Patient Dashboard
+Update Appointment Status
       │
       ▼
-Send Notification
+Patient Dashboard Updated
+      │
+      ▼
+Notification Created
 ```
 
 ---
@@ -1036,7 +1042,7 @@ Send Notification
 <p align="center">
   <img
     src="assets/database.png"
-    alt="Khouloud Fekih platform database schema"
+    alt="Khouloud Fekih psychology platform database schema"
     width="100%"
   >
 </p>
@@ -1060,26 +1066,26 @@ USER
   ├── has many NOTIFICATIONS
   └── participates in MESSAGES
 
-ADMIN
+ADMINISTRATOR
   │
   └── participates in MESSAGES
 ```
 
 ### Users
 
-Potential fields include:
+Potential fields:
 
 - ID;
 - name;
 - email;
 - phone;
-- password data;
+- password hash;
 - preferred language;
 - creation date.
 
 ### Appointments
 
-Potential fields include:
+Potential fields:
 
 - ID;
 - user ID;
@@ -1092,37 +1098,39 @@ Potential fields include:
 
 ### Messages
 
-Potential fields include:
+Potential fields:
 
 - ID;
-- sender;
-- recipient;
+- sender type;
+- sender ID;
+- recipient type;
+- recipient ID;
 - content;
-- reading status;
+- read status;
 - creation date.
 
 ### Notifications
 
-Potential fields include:
+Potential fields:
 
 - ID;
 - user ID;
 - title;
 - content;
-- reading status;
+- read status;
 - creation date.
 
 ### Administrators
 
-Potential fields include:
+Potential fields:
 
 - ID;
 - username;
 - email;
-- authentication data;
+- password hash;
 - creation date.
 
-> The diagram presents the functional database model. Refer to the actual SQLite schema in the application for the definitive field definitions.
+> The diagram represents the functional model. The application’s real SQLite schema remains the definitive source for exact fields and constraints.
 
 ---
 
@@ -1131,24 +1139,24 @@ Potential fields include:
 <p align="center">
   <img
     src="assets/security.png"
-    alt="Khouloud Fekih platform security and access control"
+    alt="Khouloud Fekih psychology platform security design"
     width="100%"
   >
 </p>
 
-Security is based on controlled access and separation between public, patient and administrative functions.
+The application uses controlled access and role separation.
 
 ### Security principles
 
-- protected patient routes;
-- protected administrator routes;
+- authenticated patient routes;
+- authenticated administrator routes;
+- session-based access control;
 - role separation;
-- authenticated sessions;
-- server-side validation;
-- controlled status actions;
-- database parameterisation;
-- minimal exposure of user information;
-- logout support.
+- server-side form validation;
+- controlled appointment actions;
+- parameterised database queries;
+- minimal data exposure;
+- logout functionality.
 
 ### Input validation
 
@@ -1156,21 +1164,19 @@ Forms should validate:
 
 - required fields;
 - email format;
-- phone format;
+- phone-number format;
 - date format;
-- selected consultation type;
-- selected time;
+- time selection;
+- consultation type;
 - text length.
 
-### Access checks
-
-Before displaying protected resources, the application verifies the appropriate session.
+### Protected-resource flow
 
 ```text
-Request to Protected Page
+Protected Route Requested
           │
           ▼
-Session Available?
+Valid Session?
      ┌────┴────┐
      │         │
     Yes        No
@@ -1182,15 +1188,17 @@ Role Check   Redirect to Login
 Authorised Resource
 ```
 
-### Important security notice
+### Repository security
 
-This repository must never contain:
+The repository must never contain:
 
-- real patient data;
-- production credentials;
-- private database backups;
-- secret keys;
-- sensitive clinical information.
+- production passwords;
+- Flask secret keys;
+- real patient databases;
+- confidential messages;
+- medical information;
+- private backups;
+- environment files containing secrets.
 
 ---
 
@@ -1198,18 +1206,18 @@ This repository must never contain:
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| Backend | Python | Application logic |
-| Framework | Flask | Routing, sessions and request handling |
-| Template engine | Jinja2 | Dynamic HTML rendering |
+| Programming | Python | Core application logic |
+| Backend framework | Flask | Routing and request handling |
+| Template engine | Jinja2 | Dynamic page rendering |
 | Database | SQLite | Persistent relational storage |
-| Frontend | HTML5 | Page structure |
-| Styling | CSS3 | Responsive premium interface |
-| Interactions | JavaScript | Dynamic frontend behaviour |
-| Content | Python dictionaries / content module | Multilingual content management |
+| Structure | HTML5 | Web-page markup |
+| Styling | CSS3 | Premium responsive interface |
+| Interactions | JavaScript | Client-side behaviour |
+| Content | Python content module | Multilingual content management |
 | Authentication | Flask sessions | Protected patient and admin areas |
 | Version control | Git and GitHub | Source-code management |
 
-### Main technical keywords
+### Technical keywords
 
 ```text
 Python
@@ -1220,12 +1228,12 @@ HTML5
 CSS3
 JavaScript
 Session Authentication
-Responsive Design
-Multilingual Web Development
-RTL Support
+Responsive Web Design
+RTL Arabic Support
+Multilingual Web Application
 Appointment Management
-Admin Dashboard
 Patient Portal
+Admin Dashboard
 Private Messaging
 Notifications
 ```
@@ -1234,85 +1242,85 @@ Notifications
 
 ## Frontend Design
 
-The interface follows a consistent visual design system.
+The interface follows a coherent visual identity.
 
-### Colour direction
+### Colour system
 
 - dark plum;
 - warm peach;
-- cream and off-white;
-- soft green for confirmation;
-- soft yellow for pending states;
-- soft red for cancellations.
+- cream;
+- off-white;
+- green confirmation indicators;
+- yellow pending indicators;
+- soft red cancellation indicators.
 
 ### Typography
 
-The design combines:
+The platform combines:
 
-- an elegant serif typeface for editorial headings;
-- a clean sans-serif typeface for navigation, labels and body content.
+- elegant serif headings;
+- clean sans-serif interface text.
 
 ### Components
 
 - rounded cards;
-- pill buttons;
+- pill-shaped buttons;
 - status badges;
-- navigation controls;
-- language selector;
-- notification counter;
+- language controls;
+- notification counters;
 - appointment cards;
-- dashboard metrics;
+- dashboard statistics;
 - message bubbles;
 - responsive forms.
 
-### User-experience principles
+### UX principles
 
-- clear visual hierarchy;
-- limited cognitive load;
-- explicit appointment statuses;
+- calm visual atmosphere;
+- clear hierarchy;
+- visible status indicators;
 - prominent primary actions;
 - consistent spacing;
 - accessible labels;
-- calm visual identity.
+- reduced cognitive load.
 
 ---
 
 ## Responsive Design
 
-The platform is designed to adapt across:
+The platform is designed for:
 
-- desktop computers;
-- tablets;
-- mobile devices.
+- desktop;
+- tablet;
+- mobile.
 
 ### Responsive considerations
 
 - flexible containers;
-- stacked form fields;
-- adaptive navigation;
 - scalable typography;
-- touch-friendly buttons;
-- responsive cards;
-- RTL layout support;
-- image resizing.
+- adaptive cards;
+- stacked form fields;
+- touch-friendly controls;
+- responsive images;
+- RTL-aware layouts.
 
-### Desktop experience
+### Desktop design
 
-The desktop layout uses:
+The desktop version uses:
 
-- wide multi-column sections;
-- large editorial headings;
-- side-by-side forms and instructions;
-- dashboard metric grids.
+- wide layouts;
+- large hero typography;
+- two-column appointment pages;
+- dashboard metric grids;
+- large conversation panels.
 
-### Mobile evolution
+### Mobile improvements
 
-A production-ready mobile version should include:
+A production mobile version may include:
 
 - collapsible navigation;
-- single-column forms;
-- simplified dashboard cards;
-- optimised conversation layout;
+- single-column dashboards;
+- compact appointment cards;
+- mobile-optimised chat;
 - reduced decorative content.
 
 ---
@@ -1327,9 +1335,9 @@ psychologist-appointment-platform/
 │   ├── architecture.png
 │   ├── conversation.png
 │   ├── database.png
-│   ├── espacepatientrendezvous.png
+│   ├── espacepatientrendez.png
 │   ├── formulaire.png
-│   ├── gestiondemandes.png
+│   ├── gestiondemande.png
 │   ├── logo.png
 │   ├── security.png
 │   ├── tableaudebord.png
@@ -1379,28 +1387,6 @@ psychologist-appointment-platform/
 ├── requirements.txt
 └── README.md
 ```
-
-### Main application files
-
-#### `app.py`
-
-Contains the Flask application and principal backend logic.
-
-#### `content.py`
-
-Contains centralised content used by the multilingual interface.
-
-#### `premium-theme.css`
-
-Defines the premium visual system.
-
-#### `main.js`
-
-Contains client-side interactions.
-
-#### `templates/`
-
-Contains the Jinja2 interface pages.
 
 ---
 
@@ -1456,7 +1442,7 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Create an environment file for local configuration if the application uses environment variables.
+Create an environment file when environment-based configuration is used:
 
 ```text
 .env
@@ -1470,9 +1456,7 @@ FLASK_ENV=development
 DATABASE_PATH=database/psychologue.db
 ```
 
-Do not publish the real `.env` file.
-
-Add it to `.gitignore`:
+Do not commit the real `.env` file.
 
 ```gitignore
 .env
@@ -1480,26 +1464,15 @@ Add it to `.gitignore`:
 !.env.example
 ```
 
-### Secret key
-
-A production secret key should:
-
-- be long;
-- be random;
-- never appear directly in the public repository;
-- differ between development and production.
-
 ---
 
 ## Running the Application
 
-From the project root:
+Run the application from the repository root:
 
 ```bash
 python app.py
 ```
-
-The development server should start locally.
 
 Open:
 
@@ -1507,19 +1480,15 @@ Open:
 http://127.0.0.1:5000
 ```
 
-### Flask development notice
-
-The built-in Flask server is suitable for development.
-
-It should not be used directly as the production server.
+The Flask development server is intended for local development only.
 
 ---
 
 ## Application Routes
 
-Based on the application pages, the platform includes routes corresponding to the following areas.
+The application includes routes associated with the following areas.
 
-### Public routes
+### Public pages
 
 ```text
 /
@@ -1539,9 +1508,9 @@ Based on the application pages, the platform includes routes corresponding to th
 ### Patient area
 
 ```text
+/rendez-vous
 /mon-espace
 /mon-espace/messages
-/rendez-vous
 ```
 
 ### Administrator area
@@ -1553,81 +1522,72 @@ Based on the application pages, the platform includes routes corresponding to th
 /admin/conversation
 ```
 
-> Exact route names should be confirmed in `app.py`, as URL structures may evolve.
+> Exact routes may differ. Refer to `app.py` for the definitive route definitions.
 
 ---
 
-## Testing the Platform
+## Testing
 
 ### Public website
 
 Verify:
 
 - homepage rendering;
+- page navigation;
 - language switching;
-- navigation;
-- links;
-- images;
-- contact page.
+- Arabic RTL layout;
+- contact information;
+- images and links.
 
-### Registration and login
+### Authentication
 
 Test:
 
-- valid account registration;
-- duplicate email handling;
-- incorrect credentials;
+- patient registration;
+- valid login;
+- invalid login;
+- duplicate-email handling;
 - logout;
-- protected route redirection.
+- protected-page redirection.
 
 ### Appointment requests
 
 Test:
 
-- missing fields;
-- invalid dates;
-- invalid phone numbers;
-- available consultation types;
-- request creation;
-- patient dashboard display.
+- required fields;
+- invalid input;
+- date selection;
+- time selection;
+- consultation types;
+- successful request creation;
+- patient-dashboard visibility.
 
-### Administrator actions
+### Administrator functions
 
 Test:
 
-- administrator login;
+- admin authentication;
 - dashboard statistics;
-- request search;
-- filtering;
+- appointment search;
+- status filters;
+- sorting;
 - confirmation;
 - cancellation;
-- pending-status restoration.
+- pending restoration.
 
 ### Messaging
 
 Test:
 
 - patient message creation;
-- administrator reply;
+- administrator replies;
 - message ordering;
-- timestamp display;
-- conversation isolation.
-
-### Multilingual interface
-
-Verify:
-
-- French content;
-- Arabic translation;
-- Arabic RTL layout;
-- English content;
-- language persistence.
+- timestamps;
+- conversation separation.
 
 ---
 
-## Deployment Considerations
-
-The current application uses Flask and SQLite.
+## Deployment
 
 ### Development architecture
 
@@ -1638,10 +1598,10 @@ Browser
 Flask Development Server
    │
    ▼
-SQLite
+SQLite Database
 ```
 
-### Production architecture
+### Recommended production architecture
 
 ```text
 Browser
@@ -1661,59 +1621,58 @@ Production Database
 
 ### Recommended production components
 
-- Gunicorn or Waitress;
+- Waitress or Gunicorn;
 - Nginx or Apache;
 - HTTPS;
 - environment-based secrets;
-- database backups;
-- application logging;
-- access monitoring;
-- secure hosting;
-- production database migration where required.
+- backups;
+- application logs;
+- monitoring;
+- secure hosting.
 
-### SQLite considerations
+### Database evolution
 
 SQLite is appropriate for:
 
-- development;
+- local development;
 - demonstrations;
-- low-traffic prototypes;
-- local applications.
+- prototypes;
+- low-traffic use.
 
-For higher traffic or concurrent production use, consider:
+For higher concurrency, consider:
 
 - MySQL;
 - PostgreSQL;
-- a managed relational database.
+- managed relational database services.
 
 ---
 
 ## Privacy and Data Protection
 
-The platform concerns a psychology practice, which requires particular caution.
+A psychology-related application requires strict caution regarding personal data.
 
-### Public repository policy
+### Public repository rules
 
-The repository must include only:
+The repository should contain only:
 
-- fictional test accounts;
-- synthetic appointment data;
-- demonstration messages;
-- non-sensitive content.
+- fictional test users;
+- synthetic appointments;
+- generic messages;
+- non-sensitive demonstration data.
 
-The repository must not include:
+It must not contain:
 
-- real patient names;
-- real telephone numbers;
-- real patient email addresses;
-- medical information;
+- real patient identities;
+- real patient phone numbers;
+- private email addresses;
+- medical details;
 - consultation notes;
 - private conversations;
-- real production database files.
+- production database backups.
 
 ### Database exclusion
 
-The production database should remain excluded from Git:
+The database should be ignored:
 
 ```gitignore
 database/*.db
@@ -1721,58 +1680,58 @@ database/*.sqlite
 database/*.sqlite3
 ```
 
-### Demonstration data
+### Screenshot data
 
-Screenshots and sample records should use:
+Screenshots should use:
 
-- invented identities;
-- generic email addresses;
-- fictional telephone numbers;
-- neutral message content.
+- fictional names;
+- dummy email addresses;
+- fictional phone numbers;
+- neutral conversation content.
 
 ---
 
 ## Limitations
 
-- The platform is a custom web application and not certified medical software.
-- The messaging area is not an emergency communication service.
-- SQLite may not be appropriate for high-concurrency production usage.
-- The application requires a secure production deployment configuration.
-- Real patient data must never be committed to the repository.
-- Appointment availability depends on the scheduling logic configured in the application.
-- Automated email or SMS delivery may require external services.
-- Accessibility should be validated with dedicated auditing tools.
-- Production use requires legal, privacy and security review.
-- The screenshots show demonstration records and should contain no real patient data.
+- The platform is not certified medical software.
+- The messaging system is not an emergency channel.
+- SQLite may not support high-concurrency production needs.
+- Production deployment requires additional security configuration.
+- Real patient data must not be published.
+- Appointment availability depends on application configuration.
+- Email or SMS notifications require external services.
+- Accessibility should be reviewed using dedicated tools.
+- Production use requires legal and data-protection review.
+- Generated visual diagrams represent the project architecture and design concept.
 
 ---
 
 ## Future Improvements
 
-### Appointment scheduling
+### Appointment management
 
 - real-time availability calendar;
-- automatic prevention of double booking;
-- configurable working hours;
-- vacation and absence management;
+- double-booking prevention;
+- configurable office hours;
+- absence management;
 - appointment rescheduling;
 - recurring appointments.
 
 ### Notifications
 
-- email confirmation;
+- email confirmations;
 - SMS reminders;
 - WhatsApp reminders;
-- appointment reminder scheduling;
-- unread-notification filtering.
+- scheduled appointment reminders;
+- notification preferences.
 
 ### Messaging
 
-- attachment support;
-- message search;
+- file attachments;
 - read receipts;
+- conversation search;
 - archived conversations;
-- conversation categories.
+- message categories.
 
 ### Patient portal
 
@@ -1782,24 +1741,24 @@ Screenshots and sample records should use:
 - downloadable confirmations;
 - communication preferences.
 
-### Administrator portal
+### Administrator dashboard
 
-- calendar view;
-- weekly agenda;
-- monthly statistics;
+- weekly calendar;
+- monthly agenda;
 - patient directory;
-- appointment export;
-- CSV and PDF reporting;
-- activity logs.
+- CSV export;
+- PDF reports;
+- activity logs;
+- advanced statistics.
 
 ### Security
 
 - CSRF protection;
-- login-rate limiting;
-- secure password-reset workflow;
-- stricter audit logging;
-- database encryption strategy;
-- automated dependency scanning.
+- rate limiting;
+- secure password reset;
+- stronger audit logging;
+- automated dependency scanning;
+- production session hardening.
 
 ### Engineering
 
@@ -1808,26 +1767,17 @@ Screenshots and sample records should use:
 - automated tests;
 - Docker;
 - continuous integration;
+- database migrations;
 - structured logging;
-- production configuration profiles;
-- database migrations.
+- environment-based configurations.
 
 ### Accessibility
 
-- keyboard-navigation audit;
+- keyboard navigation testing;
 - screen-reader testing;
 - colour-contrast validation;
-- accessible form-error reporting;
+- accessible validation messages;
 - improved Arabic accessibility.
-
-### Deployment
-
-- production WSGI configuration;
-- HTTPS;
-- managed database;
-- automated backups;
-- monitoring;
-- uptime alerts.
 
 ---
 
@@ -1838,19 +1788,20 @@ Screenshots and sample records should use:
 Final-Year Software Engineering Student  
 Specialisation in Data Science and Artificial Intelligence
 
-### Contribution
+### Project contribution
 
 - full-stack web development;
 - Flask backend;
-- SQLite data model;
+- SQLite database;
 - appointment workflow;
 - patient portal;
 - administrator dashboard;
 - messaging system;
-- multilingual interface;
-- premium UI design;
-- frontend integration;
-- project documentation.
+- notification system;
+- multilingual content;
+- RTL Arabic support;
+- premium interface design;
+- technical documentation.
 
 ### GitHub
 
@@ -1864,28 +1815,29 @@ Specialisation in Data Science and Artificial Intelligence
 
 ## Acknowledgements
 
-This platform was designed and developed for the professional activity of clinical psychologist **Khouloud Fekih** in Monastir, Tunisia.
+This platform was developed for the professional activity of clinical psychologist **Khouloud Fekih** in Monastir, Tunisia.
 
-The project demonstrates the application of software-engineering principles to a real professional need through:
+The project demonstrates how software engineering can address a real professional need through:
 
 - requirements analysis;
-- interface design;
-- multilingual content;
-- role-based workflows;
+- UI and UX design;
+- multilingual communication;
 - appointment management;
+- patient and administrator workflows;
 - persistent data storage;
-- patient–professional communication.
+- protected messaging;
+- responsive web development.
 
 ---
 
 <div align="center">
 
-<img src="assets/logo.png" alt="Khouloud Fekih platform logo" width="250">
+<img src="assets/logo.png" alt="Khouloud Fekih psychology platform logo" width="250">
 
 <br>
 
 ### Comprendre. Apaiser. Avancer.
 
-**A thoughtful digital experience for appointment management, communication and patient support.**
+**A thoughtful digital experience for appointment booking, patient communication and practice management.**
 
 </div>
