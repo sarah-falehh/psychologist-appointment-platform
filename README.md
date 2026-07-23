@@ -2,7 +2,6 @@
 
 <img src="assets/banner.png" alt="Khouloud Fekih Psychology Platform banner" width="100%">
 
-<br>
 
 # Khouloud Fekih Psychology Platform
 
