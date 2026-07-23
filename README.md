@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.png" alt="Khouloud Fekih Psychology Platform logo" width="230">
+<img src="assets/banner.png" alt="Khouloud Fekih Psychology Platform logo" width="230">
 
 # Khouloud Fekih Psychology Platform
 
