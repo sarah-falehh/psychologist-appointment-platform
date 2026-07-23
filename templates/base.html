@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html lang="{{ language }}" dir="{{ direction }}">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Khouloud Fekih, psychologue clinicienne à Monastir. Accompagnement des enfants, adolescents, adultes et familles."
+    >
+
+    <title>
+        {% block title %}
+            Khouloud Fekih — Psychologue clinicienne
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/premium-theme.css') }}"
+    >
+</head>
+
+
+<body>
+
+    {% set is_admin_page = request.path.startswith('/admin') %}
+
+
+    {% if is_admin_page %}
+
+        <header class="admin-site-header">
+
+            <div class="container admin-navigation">
+
+                <a
+                    href="{% if session.get('admin_logged_in') %}
+                              {{ url_for('admin_dashboard') }}
+                          {% else %}
+                              {{ url_for('admin_login') }}
+                          {% endif %}"
+                    class="admin-brand"
+                >
+
+                    <span class="admin-brand-icon">
+                        KF
+                    </span>
+
+                    <span class="admin-brand-text">
+
+                        <strong>
+                            Espace professionnel
+                        </strong>
+
+                        <small>
+                            Cabinet Khouloud Fekih
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <div class="admin-navigation-actions">
+
+                    {% if session.get("admin_logged_in") %}
+
+                        <span class="admin-connected-account">
+
+                            <span class="admin-account-avatar">
+                                A
+                            </span>
+
+                            <span class="admin-account-information">
+
+                                <strong>
+                                    Administrateur
+                                </strong>
+
+                                <small>
+                                    {{ session.get("admin_email") }}
+                                </small>
+
+                            </span>
+
+                        </span>
+
+
+                        <a
+                            href="{{ url_for('admin_dashboard') }}"
+                            class="admin-navigation-link"
+                        >
+                            Tableau de bord
+                        </a>
+<a
+    href="{{ url_for('admin_messages') }}"
+    class="admin-navigation-link"
+>
+    Messagerie
+</a>
+
+                        {% if 'admin_availability' in current_app.view_functions %}
+
+                            <a
+                                href="{{ url_for('admin_availability') }}"
+                                class="admin-navigation-link"
+                            >
+                                Disponibilités
+                            </a>
+
+                        {% endif %}
+
+
+                        <a
+                            href="{{ url_for('admin_logout') }}"
+                            class="button button-secondary"
+                        >
+                            Se déconnecter
+                        </a>
+
+                    {% else %}
+
+                        <a
+                            href="{{ url_for('index') }}"
+                            class="admin-navigation-link"
+                        >
+                            Retour au site
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+    {% else %}
+
+        <header class="site-header">
+
+            <div class="container navigation">
+
+                <a
+                    href="{{ url_for('index') }}"
+                    class="logo"
+                >
+
+                    <span class="logo-circle">
+                        KF
+                    </span>
+
+                    <span class="logo-text">
+
+                        <strong>
+                            Khouloud Fekih
+                        </strong>
+
+                        <small>
+                            Psychologue clinicienne
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="menu-button"
+                    id="menu-button"
+                    aria-label="Ouvrir le menu"
+                    aria-expanded="false"
+                >
+                    Menu
+                </button>
+
+
+                <nav
+                    class="main-menu"
+                    id="main-menu"
+                >
+
+                    <div class="navigation-links">
+
+                        <a href="{{ url_for('index') }}">
+                            {{ content.navigation.home }}
+                        </a>
+
+                        <a href="{{ url_for('about') }}">
+                            {{ content.navigation.about }}
+                        </a>
+
+                        <a href="{{ url_for('services') }}">
+                            {{ content.navigation.services }}
+                        </a>
+
+                        <a href="{{ url_for('contact') }}">
+                            {{ content.navigation.contact }}
+                        </a>
+
+                    </div>
+
+
+                    <div class="navigation-actions">
+
+                        <div class="language-selector">
+
+                            <a
+                                href="{{ url_for(
+                                    'change_language',
+                                    language_code='fr'
+                                ) }}"
+                                class="{% if language == 'fr' %}
+                                           active-language
+                                       {% endif %}"
+                            >
+                                FR
+                            </a>
+
+                            <a
+                                href="{{ url_for(
+                                    'change_language',
+                                    language_code='ar'
+                                ) }}"
+                                class="{% if language == 'ar' %}
+                                           active-language
+                                       {% endif %}"
+                            >
+                                AR
+                            </a>
+
+                            <a
+                                href="{{ url_for(
+                                    'change_language',
+                                    language_code='en'
+                                ) }}"
+                                class="{% if language == 'en' %}
+                                           active-language
+                                       {% endif %}"
+                            >
+                                EN
+                            </a>
+
+                        </div>
+
+
+                        {% if session.get("user_id") %}
+<div class="notification-dropdown">
+
+    <button
+        class="notification-button"
+        id="notification-button"
+        type="button"
+    >
+
+        🔔
+
+        {% if unread_notifications > 0 %}
+
+        <span class="notification-count">
+
+            {{ unread_notifications }}
+
+        </span>
+
+        {% endif %}
+
+    </button>
+
+    <div
+        class="notification-menu"
+        id="notification-menu"
+    >
+
+        <h4>
+
+            Notifications
+
+        </h4>
+
+        {% if notifications %}
+
+            {% for notif in notifications %}
+
+            <a
+                href="{{ notif['link'] }}"
+                class="notification-item"
+            >
+
+                <strong>
+
+                    {{ notif["title"] }}
+
+                </strong>
+
+                <small>
+
+                    {{ notif["body"] }}
+
+                </small>
+
+            </a>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="empty-notification">
+
+                Aucune notification
+
+            </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+                            <div class="user-dropdown">
+
+                                <button
+                                    type="button"
+                                    class="user-dropdown-button"
+                                    id="user-dropdown-button"
+                                    aria-expanded="false"
+                                >
+
+                                    <span class="user-avatar">
+                                        {{
+                                            session.get(
+                                                "user_name",
+                                                "U"
+                                            )[0] | upper
+                                        }}
+                                    </span>
+
+                                    <span class="user-dropdown-name">
+                                        {{ session.get("user_name") }}
+                                    </span>
+
+                                    <span class="dropdown-arrow">
+                                        ⌄
+                                    </span>
+
+                                </button>
+
+
+                                <div
+                                    class="user-dropdown-menu"
+                                    id="user-dropdown-menu"
+                                >
+
+                                    <div class="user-dropdown-header">
+
+                                        <strong>
+                                            {{ session.get("user_name") }}
+                                        </strong>
+
+                                        <small>
+                                            {{ session.get("user_email") }}
+                                        </small>
+
+                                    </div>
+
+
+                                    <a
+                                        href="{{ url_for(
+                                            'patient_dashboard'
+                                        ) }}"
+                                    >
+                                        {% if language == "ar" %}
+                                            فضاء المريض
+                                        {% elif language == "en" %}
+                                            My account
+                                        {% else %}
+                                            Mon espace
+                                        {% endif %}
+                                    </a>
+
+
+                                    <a
+                                        href="{{ url_for('appointment') }}"
+                                    >
+                                        {% if language == "ar" %}
+                                            موعد جديد
+                                        {% elif language == "en" %}
+                                            New appointment
+                                        {% else %}
+                                            Nouveau rendez-vous
+                                        {% endif %}
+                                    </a>
+<a href="{{ url_for('patient_messages') }}">
+    {% if language == "ar" %}
+        الرسائل
+    {% elif language == "en" %}
+        Messages
+    {% else %}
+        Messages
+    {% endif %}
+</a>
+
+                                    <div class="dropdown-separator"></div>
+
+
+                                    <a
+                                        href="{{ url_for('logout') }}"
+                                        class="dropdown-logout"
+                                    >
+                                        {% if language == "ar" %}
+                                            تسجيل الخروج
+                                        {% elif language == "en" %}
+                                            Log out
+                                        {% else %}
+                                            Déconnexion
+                                        {% endif %}
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        {% else %}
+
+                            <a
+                                href="{{ url_for('login') }}"
+                                class="login-link"
+                            >
+                                {% if language == "ar" %}
+                                    تسجيل الدخول
+                                {% elif language == "en" %}
+                                    Log in
+                                {% else %}
+                                    Connexion
+                                {% endif %}
+                            </a>
+
+                            <a
+                                href="{{ url_for('signup') }}"
+                                class="signup-link"
+                            >
+                                {% if language == "ar" %}
+                                    إنشاء حساب
+                                {% elif language == "en" %}
+                                    Sign up
+                                {% else %}
+                                    Inscription
+                                {% endif %}
+                            </a>
+
+                        {% endif %}
+
+
+                        <a
+                            href="{{ url_for('appointment') }}"
+                            class="
+                                button
+                                button-primary
+                                appointment-nav-button
+                            "
+                        >
+                            {{ content.navigation.appointment }}
+                        </a>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+        </header>
+
+    {% endif %}
+
+
+    <main>
+
+        {% with messages =
+            get_flashed_messages(with_categories=true)
+        %}
+
+            {% if messages %}
+
+                <div class="container flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="
+                                flash-message
+                                flash-{{ category }}
+                            "
+                            role="alert"
+                        >
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    {% if is_admin_page %}
+
+        <footer class="admin-site-footer">
+
+            <div class="container admin-footer-content">
+
+                <div>
+
+                    <strong>
+                        Cabinet Khouloud Fekih
+                    </strong>
+
+                    <p>
+                        Espace professionnel sécurisé
+                    </p>
+
+                </div>
+
+                <small>
+                    © 2026 — Administration du cabinet
+                </small>
+
+            </div>
+
+        </footer>
+
+    {% else %}
+
+        <footer class="site-footer">
+
+            <div class="container footer-content">
+
+                <div>
+
+                    <strong>
+                        Khouloud Fekih
+                    </strong>
+
+                    <p>
+                        Psychologue clinicienne à Monastir
+                    </p>
+
+                </div>
+
+
+                <p class="emergency-message">
+                    {{ content.footer.emergency }}
+                </p>
+
+
+                <small>
+                    © 2026 Khouloud Fekih
+                </small>
+
+            </div>
+
+        </footer>
+
+    {% endif %}
+
+
+    <script
+        src="{{ url_for('static', filename='js/main.js') }}"
+    ></script>
+
+</body>
+
+</html>

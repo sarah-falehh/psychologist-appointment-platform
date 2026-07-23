@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}
+Conversation avec {{ patient["full_name"] }}
+{% endblock %}
+
+{% block content %}
+
+<section class="chat-section admin-chat-section">
+
+    <div class="container">
+
+        <div class="chat-card">
+
+            <div class="chat-header">
+
+                <a
+                    href="{{ url_for('admin_messages') }}"
+                    class="chat-back-link"
+                >
+                    ←
+                </a>
+
+                <div class="chat-contact-avatar">
+                    {{ patient["full_name"][0]|upper }}
+                </div>
+
+                <div>
+
+                    <strong>
+                        {{ patient["full_name"] }}
+                    </strong>
+
+                    <small>
+                        {{ patient["email"] }}
+                        ·
+                        {{ patient["phone"] }}
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="chat-messages" id="chat-messages">
+
+                {% if messages %}
+
+                    {% for item in messages %}
+
+                        <article
+                            class="
+                                chat-message
+
+                                {% if item['sender_role'] == 'admin' %}
+                                    chat-message-sent
+                                {% else %}
+                                    chat-message-received
+                                {% endif %}
+                            "
+                        >
+
+                            <div class="chat-bubble">
+
+                                <p>
+                                    {{ item["message"] }}
+                                </p>
+
+                                <time>
+                                    {{ item["created_at"] }}
+                                </time>
+
+                            </div>
+
+                        </article>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="chat-empty">
+
+                        <h2>
+                            Aucun message
+                        </h2>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <form
+                method="POST"
+                class="chat-composer"
+            >
+
+                <textarea
+                    name="message"
+                    id="chat-message"
+                    rows="2"
+                    maxlength="1500"
+                    placeholder="Répondre au patient…"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    Envoyer
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

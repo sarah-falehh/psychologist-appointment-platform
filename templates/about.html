@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.navigation.about }} - {{ content.profile.name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container">
+
+        <p class="section-label">
+            {{ content.about.label }}
+        </p>
+
+        <h1>
+            {{ content.about.title }}
+        </h1>
+
+        <p class="page-description">
+            {{ content.about.description }}
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container about-grid">
+
+        <div>
+
+            <div class="about-photo">
+
+    <img
+        src="{{ url_for('static', filename='images/khouloud.jpeg') }}"
+        alt="Khouloud Fekih"
+        class="psychologist-photo"
+    >
+
+</div>
+
+            <div class="profile-summary">
+
+                <h2>
+                    {{ content.profile.name }}
+                </h2>
+
+                <p>
+                    {{ content.profile.introduction }}
+                </p>
+
+                <ul class="profile-positions">
+
+                    {% for position in content.profile.positions %}
+
+                        <li>
+                            {{ position }}
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="about-content">
+
+            <article class="about-block">
+                <h2>{{ content.about.clinical_title }}</h2>
+                <p>{{ content.about.clinical_text }}</p>
+            </article>
+
+            <article class="about-block">
+                <h2>{{ content.about.children_title }}</h2>
+                <p>{{ content.about.children_text }}</p>
+            </article>
+
+            <article class="about-block">
+                <h2>{{ content.about.montessori_title }}</h2>
+                <p>{{ content.about.montessori_text }}</p>
+            </article>
+
+            <article class="about-block">
+                <h2>{{ content.about.school_title }}</h2>
+                <p>{{ content.about.school_text }}</p>
+            </article>
+
+            <article class="about-block">
+                <h2>{{ content.about.training_title }}</h2>
+                <p>{{ content.about.training_text }}</p>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="section cabinet-gallery-section">
+
+    <div class="container">
+
+        <div class="gallery-heading">
+
+            <p class="section-label">
+                {% if language == "ar" %}
+                    صور المركز
+                {% elif language == "en" %}
+                    The center
+                {% else %}
+                    Le centre
+                {% endif %}
+            </p>
+
+            <h2>
+                {% if language == "ar" %}
+                    اكتشفوا فضاءات وأنشطة المركز
+                {% elif language == "en" %}
+                    Discover the center and its activities
+                {% else %}
+                    Découvrez le centre et ses activités
+                {% endif %}
+            </h2>
+
+        </div>
+
+
+        <div class="cabinet-gallery">
+
+            <figure class="gallery-item gallery-item-large">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/cabinet-khouloud-fekih-psychologie-enfants.jpg'
+                    ) }}"
+                    alt="Cabinet de Khouloud Fekih"
+                    loading="lazy"
+                >
+
+            </figure>
+
+
+            <figure class="gallery-item">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/centre-education-enfants-monastir.jpg'
+                    ) }}"
+                    alt="Centre d’éducation pour enfants à Monastir"
+                    loading="lazy"
+                >
+
+            </figure>
+
+
+            <figure class="gallery-item">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/difficultes-scolaires-apprentissages-enfants-a-monastir.jpg'
+                    ) }}"
+                    alt="Accompagnement des difficultés scolaires"
+                    loading="lazy"
+                >
+
+            </figure>
+
+
+            <figure class="gallery-item">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/imm-el-makateb-monastir.jpg'
+                    ) }}"
+                    alt="Immeuble El Mekateb à Monastir"
+                    loading="lazy"
+                >
+
+            </figure>
+
+
+            <figure class="gallery-item">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/Psychological-Montessori-Solutions-monastir.jpg'
+                    ) }}"
+                    alt="Psychological Montessori Solutions Monastir"
+                    loading="lazy"
+                >
+
+            </figure>
+
+
+            <figure class="gallery-item">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/psychologie-enfants-education-monastir.jpg'
+                    ) }}"
+                    alt="Psychologie et éducation des enfants"
+                    loading="lazy"
+                >
+
+            </figure>
+
+
+            <figure class="gallery-item">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/troubles-enfants-psychologie-monastir.jpg'
+                    ) }}"
+                    alt="Accompagnement psychologique des enfants"
+                    loading="lazy"
+                >
+
+            </figure>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section services-preview">
+
+    <div class="container">
+
+        <h2>
+            {{ content.additional_services.title }}
+        </h2>
+
+        <div class="additional-services-grid">
+
+            {% for item in content["additional_services"]["items"] %}
+
+                <div class="additional-service-item">
+
+                    <span>✓</span>
+
+                    <p>{{ item }}</p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

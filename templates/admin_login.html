@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}
+Connexion administrateur
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-login-section">
+
+    <div class="container">
+
+        <div class="admin-login-card">
+
+            <div class="admin-login-introduction">
+
+                <p class="section-label">
+                    Espace professionnel
+                </p>
+
+                <h1>
+                    Connexion administrateur
+                </h1>
+
+                <p>
+                    Cet espace est réservé à la psychologue
+                    et permet de consulter les demandes
+                    de rendez-vous.
+                </p>
+
+            </div>
+
+            <form
+                class="admin-login-form"
+                method="POST"
+                action="{{ url_for('admin_login') }}"
+            >
+
+                <div class="form-group">
+
+                    <label for="admin-email">
+                        Adresse e-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="admin-email"
+                        name="email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="admin-password">
+                        Mot de passe
+                    </label>
+
+                    <input
+                        type="password"
+                        id="admin-password"
+                        name="password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    Se connecter
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

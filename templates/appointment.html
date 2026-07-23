@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.appointment_page.title }}
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header appointment-page-header">
+    <div class="container">
+
+        <p class="section-label">
+            {{ content.appointment_page.label }}
+        </p>
+
+        <h1>
+            {{ content.appointment_page.title }}
+        </h1>
+
+        <p class="page-description">
+            {{ content.appointment_page.description }}
+        </p>
+
+    </div>
+</section>
+
+
+<section class="appointment-section">
+
+    <div class="container appointment-layout">
+
+        <aside class="appointment-explanation">
+
+            <p class="section-label">
+                {{ content.appointment_page.how_it_works }}
+            </p>
+
+            <h2>
+                {{ content.appointment_page.steps_title }}
+            </h2>
+
+            <p class="appointment-explanation-text">
+                {{ content.appointment_page.steps_description }}
+            </p>
+
+            <div class="appointment-steps">
+
+                <div class="appointment-step">
+                    <span>1</span>
+                    <p>
+                        {{ content.appointment_page.step_1 }}
+                    </p>
+                </div>
+
+                <div class="appointment-step">
+                    <span>2</span>
+                    <p>
+                        {{ content.appointment_page.step_2 }}
+                    </p>
+                </div>
+
+                <div class="appointment-step">
+                    <span>3</span>
+                    <p>
+                        {{ content.appointment_page.step_3 }}
+                    </p>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <form
+            class="appointment-form"
+            method="POST"
+            action="{{ url_for('appointment') }}"
+        >
+
+            <div class="appointment-form-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        {{ content.appointment_page.label }}
+                    </p>
+
+                    <h2>
+                        {{ content.appointment_page.form_title
+                           if content.appointment_page.form_title is defined
+                           else content.appointment_page.title }}
+                    </h2>
+
+                </div>
+
+                <p>
+                    {{ content.appointment_page.form_intro
+                       if content.appointment_page.form_intro is defined
+                       else content.appointment_page.description }}
+                </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="full-name">
+                        {{ content.appointment_page.full_name }}
+                    </label>
+
+                    <input
+                        type="text"
+                        id="full-name"
+                        name="full_name"
+                        value="{{ session.get('user_name', '') }}"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        {{ content.appointment_page.phone }}
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value="{{ session.get('user_phone', '') }}"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        {{ content.appointment_page.email }}
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value="{{ session.get('user_email', '') }}"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="consultation-type">
+                        {{ content.appointment_page.consultation_type }}
+                    </label>
+
+                    <select
+                        id="consultation-type"
+                        name="consultation_type"
+                        required
+                    >
+
+                        <option value="">
+                            {{ content.appointment_page.select }}
+                        </option>
+
+                        <option value="premiere-consultation">
+                            {{ content.appointment_page.first_consultation }}
+                        </option>
+
+                        <option value="suivi">
+                            {{ content.appointment_page.follow_up }}
+                        </option>
+
+                        <option value="guidance-parentale">
+                            {{ content.appointment_page.parental_guidance }}
+                        </option>
+
+                        <option value="bilan">
+                            {{ content.appointment_page.assessment }}
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="appointment-date">
+                        {{ content.appointment_page.date }}
+                    </label>
+
+                    <input
+                        type="date"
+                        id="appointment-date"
+                        name="appointment_date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="preferred-time">
+                        {{ content.appointment_page.preferred_time }}
+                    </label>
+
+                    <select
+                        id="preferred-time"
+                        name="preferred_time"
+                        required
+                        disabled
+                    >
+
+                        <option value="">
+                            {{ content.appointment_page.select_date_first }}
+                        </option>
+
+                    </select>
+
+                    <p
+                        class="form-help slots-message"
+                        id="slots-message"
+                    ></p>
+
+                </div>
+
+
+                <div class="form-group form-group-full">
+
+                    <label for="message">
+                        {{ content.appointment_page.message }}
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        maxlength="500"
+                        rows="6"
+                        placeholder="{{ content.appointment_page.message_placeholder }}"
+                    ></textarea>
+
+                    <div class="textarea-help-row">
+
+                        <p class="form-help">
+                            {{ content.appointment_page.max_characters }}
+                        </p>
+
+                        <span id="message-counter">
+                            0 / 500
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="appointment-consent-box">
+
+                <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    required
+                >
+
+                <label for="consent">
+                    {{ content.appointment_page.consent }}
+                </label>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="button button-primary appointment-submit-button"
+            >
+                {{ content.appointment_page.submit }}
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<script id="appointment-translations" type="application/json">
+{
+    "selectDateFirst": {{ content.appointment_page.select_date_first | tojson }},
+    "loadingSlots": {{ content.appointment_page.loading_slots | tojson }},
+    "noSlots": {{ content.appointment_page.no_slots | tojson }},
+    "chooseSlot": {{ content.appointment_page.choose_slot | tojson }},
+    "slotsError": {{ content.appointment_page.slots_error | tojson }}
+}
+</script>
+
+{% endblock %}

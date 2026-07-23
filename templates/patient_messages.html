@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}
+Messagerie
+{% endblock %}
+
+{% block content %}
+
+<section class="chat-page-header">
+
+    <div class="container">
+
+        <p class="section-label">
+            Espace patient
+        </p>
+
+        <h1>
+            Messagerie
+        </h1>
+
+        <p>
+            Échangez avec le cabinet au sujet de vos rendez-vous.
+            N’envoyez pas d’informations médicales urgentes ou sensibles.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="chat-section">
+
+    <div class="container">
+
+        <div class="chat-card">
+
+            <div class="chat-header">
+
+                <div class="chat-contact-avatar">
+                    KF
+                </div>
+
+                <div>
+
+                    <strong>
+                        Cabinet Khouloud Fekih
+                    </strong>
+
+                    <small>
+                        Psychologue clinicienne
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="chat-messages" id="chat-messages">
+
+                {% if messages %}
+
+                    {% for item in messages %}
+
+                        <article
+                            class="
+                                chat-message
+
+                                {% if item['sender_role'] == 'patient' %}
+                                    chat-message-sent
+                                {% else %}
+                                    chat-message-received
+                                {% endif %}
+                            "
+                        >
+
+                            <div class="chat-bubble">
+
+                                <p>
+                                    {{ item["message"] }}
+                                </p>
+
+                                <time>
+                                    {{ item["created_at"] }}
+                                </time>
+
+                            </div>
+
+                        </article>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="chat-empty">
+
+                        <h2>
+                            Commencez la conversation
+                        </h2>
+
+                        <p>
+                            Vous pouvez poser une question concernant
+                            un rendez-vous ou demander une modification.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <form
+                method="POST"
+                class="chat-composer"
+            >
+
+                <textarea
+                    name="message"
+                    id="chat-message"
+                    rows="2"
+                    maxlength="1500"
+                    placeholder="Écrivez votre message…"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    Envoyer
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.appointment_success.label }}
+{% endblock %}
+
+{% block content %}
+
+<section class="confirmation-section">
+
+    <div class="container">
+
+        <div class="confirmation-card">
+
+            <div class="confirmation-icon">
+                ✓
+            </div>
+
+            <p class="section-label">
+                {{ content.appointment_success.label }}
+            </p>
+
+            <h1>
+                {{ content.appointment_success.title }}
+            </h1>
+
+            <p>
+                {{ content.appointment_success.description }}
+            </p>
+
+            <div class="confirmation-actions">
+
+                <a
+                    href="{{ url_for('index') }}"
+                    class="button button-secondary"
+                >
+                    {{ content.appointment_success.home_button }}
+                </a>
+
+                {% if session.get("user_id") %}
+
+                    <a
+                        href="{{ url_for('patient_dashboard') }}"
+                        class="button button-primary"
+                    >
+                        {{ content.appointment_success.dashboard_button }}
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

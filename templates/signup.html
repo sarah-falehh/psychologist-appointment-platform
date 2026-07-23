@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.auth.signup_title }}
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+
+    <div class="container">
+
+        <div class="auth-card">
+
+            <div class="auth-introduction">
+
+                <p class="section-label">
+                    {{ content.auth.patient_area }}
+                </p>
+
+                <h1>
+                    {{ content.auth.signup_title }}
+                </h1>
+
+                <p>
+                    {{ content.auth.signup_description }}
+                </p>
+
+            </div>
+
+
+            <form
+                class="auth-form"
+                method="POST"
+                action="{{ url_for('signup') }}"
+            >
+
+                <div class="form-group">
+
+                    <label for="signup-name">
+                        {{ content.auth.full_name }}
+                    </label>
+
+                    <input
+                        type="text"
+                        id="signup-name"
+                        name="full_name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signup-email">
+                        {{ content.auth.email }}
+                    </label>
+
+                    <input
+                        type="email"
+                        id="signup-email"
+                        name="email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signup-phone">
+                        {{ content.auth.phone }}
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="signup-phone"
+                        name="phone"
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signup-password">
+                        {{ content.auth.password }}
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signup-password"
+                        name="password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <p class="form-help">
+                        {{ content.auth.password_help }}
+                    </p>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signup-confirm-password">
+                        {{ content.auth.confirm_password }}
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signup-confirm-password"
+                        name="confirm_password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    {{ content.auth.signup_button }}
+                </button>
+
+
+                <p class="auth-link">
+
+                    {{ content.auth.already_account }}
+
+                    <a href="{{ url_for('login') }}">
+                        {{ content.auth.login_link }}
+                    </a>
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

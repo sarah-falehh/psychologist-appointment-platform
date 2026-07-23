@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.patient_dashboard.title }}
+{% endblock %}
+
+{% block content %}
+
+{% set consultation_labels = {
+    "premiere-consultation": content.appointment_page.first_consultation,
+    "suivi": content.appointment_page.follow_up,
+    "guidance-parentale": content.appointment_page.parental_guidance,
+    "bilan": content.appointment_page.assessment
+} %}
+
+
+
+<section class="patient-header">
+
+    <div class="container patient-header-content">
+
+        <div>
+
+            <p class="section-label">
+                {{ content.patient_dashboard.label }}
+            </p>
+
+            <h1>
+                {{ content.patient_dashboard.hello }}
+                {{ session.get("user_name") }}
+            </h1>
+
+            <p class="page-description">
+                {{ content.patient_dashboard.description }}
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('appointment') }}"
+            class="button button-primary"
+        >
+            {{ content.patient_dashboard.new_appointment }}
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="patient-section">
+
+    <div class="container">
+
+        <div class="patient-panel">
+
+            <div class="patient-panel-header">
+
+                <div>
+
+                    <p class="section-label">
+                        {{ content.patient_dashboard.appointments_label }}
+                    </p>
+
+                    <h2>
+                        {{ content.patient_dashboard.title }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            {% if appointments %}
+
+                <div class="patient-appointments-list">
+
+                    {% for appointment in appointments %}
+
+                        <article class="patient-appointment-card">
+
+                            <div class="patient-appointment-top">
+
+                                <div>
+
+                                    <small>
+                                        {{ content.patient_dashboard.request_number }}
+                                        {{ appointment["id"] }}
+                                    </small>
+
+                                    <h3>
+                                        {{ consultation_labels.get(
+                                            appointment["consultation_type"],
+                                            appointment["consultation_type"]
+                                        ) }}
+                                    </h3>
+
+                                </div>
+
+                                <span
+                                    class="
+                                        status-badge
+
+                                        {% if appointment["status"] == "Confirmé" %}
+                                            status-confirmed
+                                        {% elif appointment["status"] == "Annulé" %}
+                                            status-cancelled
+                                        {% else %}
+                                            status-pending
+                                        {% endif %}
+                                    "
+                                >
+
+                                    {% if appointment["status"] == "Confirmé" %}
+
+                                        {{ content.patient_dashboard.status_confirmed }}
+
+                                    {% elif appointment["status"] == "Annulé" %}
+
+                                        {{ content.patient_dashboard.status_cancelled }}
+
+                                    {% else %}
+
+                                        {{ content.patient_dashboard.status_pending }}
+
+                                    {% endif %}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="patient-appointment-details">
+
+                                <div>
+
+                                    <small>
+                                        {{ content.patient_dashboard.date }}
+                                    </small>
+
+                                    <strong>
+                                        {{ appointment["appointment_date"] }}
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <small>
+                                        {{ content.patient_dashboard.time }}
+                                    </small>
+
+                                    <strong>
+                                        {{ appointment["preferred_time"] }}
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <small>
+                                        {{ content.patient_dashboard.phone }}
+                                    </small>
+
+                                    <strong>
+                                        {{ appointment["phone"] }}
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <small>
+                                        {{ content.patient_dashboard.email }}
+                                    </small>
+
+                                    <strong>
+                                        {{ appointment["email"] }}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            {% if appointment["message"] %}
+
+                                <div class="patient-appointment-message">
+
+                                    <small>
+                                        {{ content.patient_dashboard.message }}
+                                    </small>
+
+                                    <p>
+                                        {{ appointment["message"] }}
+                                    </p>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if appointment["status"] == "En attente" %}
+
+                                <form
+                                    method="POST"
+                                    action="{{ url_for(
+                                        'cancel_patient_appointment',
+                                        appointment_id=appointment['id']
+                                    ) }}"
+                                    onsubmit="return confirm(
+                                        '{{ content.patient_dashboard.cancel_confirmation }}'
+                                    );"
+                                >
+
+                                    <button
+                                        type="submit"
+                                        class="button button-danger"
+                                    >
+                                        {{ content.patient_dashboard.cancel }}
+                                    </button>
+
+                                </form>
+
+                            {% endif %}
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state">
+
+                    <h3>
+                        {{ content.patient_dashboard.no_appointments }}
+                    </h3>
+
+                    <p>
+                        {{ content.patient_dashboard.no_appointments_text }}
+                    </p>
+
+                    <a
+                        href="{{ url_for('appointment') }}"
+                        class="button button-primary"
+                    >
+                        {{ content.patient_dashboard.book }}
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

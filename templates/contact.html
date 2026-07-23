@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.navigation.contact }} - {{ content.profile.name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container">
+
+        <p class="section-label">
+            {{ content.contact.label }}
+        </p>
+
+        <h1>
+            {{ content.contact.title }}
+        </h1>
+
+        <p class="page-description">
+            {{ content.profile.introduction }}
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section contact-page">
+
+    <div class="container contact-main-grid">
+
+        <div class="contact-information">
+
+            <article class="contact-item">
+
+                <span class="contact-icon">
+                    📍
+                </span>
+
+                <div>
+
+                    <small>
+                        {{ content.contact.address_label }}
+                    </small>
+
+                    <strong>
+                        {{ content.contact.address }}
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="contact-item">
+
+                <span class="contact-icon">
+                    ☎
+                </span>
+
+                <div>
+
+                    <small>
+                        {{ content.contact.phone_label }}
+                    </small>
+
+                    <a href="tel:+21620194015">
+                        {{ content.contact.phone }}
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="contact-item">
+
+                <span class="contact-icon">
+                    ✉
+                </span>
+
+                <div>
+
+                    <small>
+                        {{ content.contact.email_label }}
+                    </small>
+
+                    <a
+                        href="mailto:{{ content.contact.email }}"
+                    >
+                        {{ content.contact.email }}
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <div class="contact-actions">
+
+                <a
+                    href="https://wa.me/21620194015"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-action contact-action-whatsapp"
+                >
+                    <span>☎</span>
+
+                    {{ content.contact.whatsapp_button }}
+                </a>
+
+
+                <a
+                    href="mailto:{{ content.contact.email }}"
+                    class="contact-action contact-action-email"
+                >
+                    <span>✉</span>
+
+                    {{ content.contact.email_button }}
+                </a>
+
+
+                <a
+                    href="https://www.facebook.com/profile.php?id=61571132743583"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-action contact-action-facebook"
+                >
+                    <span>f</span>
+
+                    {{ content.contact.facebook_button }}
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-map-card">
+
+            <div class="contact-map-header">
+
+                <p class="section-label">
+                    {{ content.contact.map_title }}
+                </p>
+
+                <h2>
+                    Monastir
+                </h2>
+
+            </div>
+
+
+            <iframe
+                class="contact-map"
+                src="https://www.google.com/maps?q=Avenue+Taieb+Mhiri,+Immeuble+El+Mekateb,+Monastir,+Tunisia&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="{{ content.contact.map_title }}"
+            ></iframe>
+
+
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=Avenue+Taieb+Mhiri+Immeuble+El+Mekateb+Monastir+Tunisia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-primary map-button"
+            >
+                {{ content.contact.map_button }}
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="contact-social-section">
+
+    <div class="container">
+
+        <div class="contact-social-card">
+
+            <h2>
+                {{ content.contact.social_title }}
+            </h2>
+
+            <div class="contact-social-links">
+
+                <a
+                    href="https://wa.me/21620194015"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    class="social-circle whatsapp-circle"
+                >
+                    ☎
+                </a>
+
+                <a
+                    href="mailto:{{ content.contact.email }}"
+                    aria-label="E-mail"
+                    class="social-circle email-circle"
+                >
+                    ✉
+                </a>
+
+                <a
+                    href="https://www.facebook.com/profile.php?id=61571132743583"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    class="social-circle facebook-circle"
+                >
+                    f
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

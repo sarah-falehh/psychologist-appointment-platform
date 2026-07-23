@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ content.navigation.services }} - {{ content.profile.name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container">
+
+        <p class="section-label">
+            {{ content.services.label }}
+        </p>
+
+        <h1>
+            {{ content.services.title }}
+        </h1>
+
+    </div>
+
+</section>
+
+
+<section class="section services-page">
+
+    <div class="container">
+
+        <div class="cards-grid">
+
+            {% for service in content["services"]["items"] %}
+
+                <article class="service-card">
+
+                    <span class="card-number">
+                        {{ "%02d"|format(loop.index) }}
+                    </span>
+
+                    <h3>
+                        {{ service.title }}
+                    </h3>
+
+                    <p>
+                        {{ service.description }}
+                    </p>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
