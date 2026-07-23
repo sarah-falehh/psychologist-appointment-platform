@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="Khouloud Fekih Psychology Platform logo" width="230">
+<img src="assets/banner.png" alt="Khouloud Fekih Psychology Platform banner" width="100%">
+
+<br>
 
 # Khouloud Fekih Psychology Platform
 
@@ -9,7 +11,6 @@
 **Flask · Python · SQLite · Jinja2 · HTML5 · CSS3 · JavaScript · Responsive Design**
 
 <br>
-
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](#technology-stack)
 [![Flask](https://img.shields.io/badge/Flask-Web%20Framework-000000?logo=flask&logoColor=white)](#technology-stack)
 [![SQLite](https://img.shields.io/badge/SQLite-Relational%20Database-003B57?logo=sqlite&logoColor=white)](#database-design)
