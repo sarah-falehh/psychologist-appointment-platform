@@ -1,7 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="Khouloud Fekih Psychology Platform banner" width="100%">
+<img src="assets/banner.png" width="100%">
 
+<br>
 
 # Khouloud Fekih Psychology Platform
 
@@ -10,22 +11,25 @@
 **Flask · Python · SQLite · Jinja2 · HTML5 · CSS3 · JavaScript · Responsive Design**
 
 <br>
-[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](#technology-stack)
-[![Flask](https://img.shields.io/badge/Flask-Web%20Framework-000000?logo=flask&logoColor=white)](#technology-stack)
-[![SQLite](https://img.shields.io/badge/SQLite-Relational%20Database-003B57?logo=sqlite&logoColor=white)](#database-design)
-[![Jinja2](https://img.shields.io/badge/Jinja2-Template%20Engine-B41717?logo=jinja&logoColor=white)](#technology-stack)
-[![HTML5](https://img.shields.io/badge/HTML5-Frontend-E34F26?logo=html5&logoColor=white)](#technology-stack)
-[![CSS3](https://img.shields.io/badge/CSS3-Premium%20UI-1572B6?logo=css3&logoColor=white)](#technology-stack)
-[![JavaScript](https://img.shields.io/badge/JavaScript-Interactions-F7DF1E?logo=javascript&logoColor=black)](#technology-stack)
-[![Multilingual](https://img.shields.io/badge/Multilingual-FR%20%7C%20AR%20%7C%20EN-CB846A)](#multilingual-experience)
-[![Responsive](https://img.shields.io/badge/Design-Responsive-51384F)](#responsive-design)
-[![Project](https://img.shields.io/badge/Project-Full--Stack%20Application-7B506F)](#project-context)
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/Flask-Web_Framework-000000?logo=flask&logoColor=white">
+<img src="https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white">
+<img src="https://img.shields.io/badge/Jinja2-Templates-B41717?logo=jinja&logoColor=white">
+<img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/Multilingual-FR_|_AR_|_EN-CB846A">
+
+</p>
 
 <br>
 
-**A complete multilingual web platform connecting a clinical psychologist with patients through appointment booking, dedicated dashboards, notifications and private messaging.**
+A complete multilingual web platform connecting a clinical psychologist with patients through appointment booking, dedicated dashboards, notifications and private messaging.
 
-<br>
+</div>
 
 [Overview](#overview) ·
 [Features](#core-features) ·
