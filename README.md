@@ -314,7 +314,7 @@ The following visuals present the principal pages and workflows of the platform.
 
 <p align="center">
   <img
-    src="assets/accueil.png"
+    src="assets/acceuil.png"
     alt="Khouloud Fekih clinical psychologist website homepage"
     width="100%"
   >
